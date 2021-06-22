@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestNextToken(t *testing.T) {
+func TestNextToken(test *testing.T) {
 	input := "=+(){},;"
 
 	tests := []struct {
@@ -25,15 +25,15 @@ func TestNextToken(t *testing.T) {
 
 	inp := New(input)
 
-	for i, tt := range tests {
-		nextToken := inp.NextToken()
+	for i, testToken := range tests {
+		tok := inp.NextToken()
 
-		if nextToken.Type != tt.expectedType {
-			t.Fatalf("tests[%d] - nextTokenentype wrong. expected=%q, got=%q", i, tt.expectedType, nextToken.Type)
+		if tok.Type != testToken.expectedType {
+			test.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, testToken.expectedType, tok.Type)
 		}
 
-		if nextToken.Literal != tt.expectedLiteral {
-			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, nextToken.Literal)
+		if tok.Literal != testToken.expectedLiteral {
+			test.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, testToken.expectedLiteral, tok.Literal)
 		}
 	}
 }
