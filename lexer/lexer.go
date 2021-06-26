@@ -48,6 +48,13 @@ func (lex *Lexer) NextToken() token.Token {
 	case 0:
 		tok.Literal = ""
 		tok.Type = token.EOF
+	default:
+		if isLetter(lex.ch) {
+			tok.Literal = lex.readIdentifier()
+			return tok
+		} else {
+			tok = newToken(token.ILLEGAL, lex.ch)
+		}
 	}
 
 	lex.readChar()
@@ -56,4 +63,16 @@ func (lex *Lexer) NextToken() token.Token {
 
 func newToken(tokenType token.TokenType, ch byte) token.Token {
 	return token.Token{Type: tokenType, Literal: string(ch)}
+}
+
+func (lex *Lexer) readIdentifier() string {
+	firstPos := lex.position
+	for isLetter(lex.ch) {
+		lex.readChar()
+	}
+	return lex.input[firstPos:lex.position]
+}
+
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }
