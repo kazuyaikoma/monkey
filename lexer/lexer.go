@@ -52,9 +52,8 @@ func (lex *Lexer) NextToken() token.Token {
 		if isLetter(lex.ch) {
 			tok.Literal = lex.readIdentifier()
 			return tok
-		} else {
-			tok = newToken(token.ILLEGAL, lex.ch)
 		}
+		tok = newToken(token.ILLEGAL, lex.ch)
 	}
 
 	lex.readChar()
