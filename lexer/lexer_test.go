@@ -1,27 +1,12 @@
 package lexer
 
 import (
-	"github.com/nixii/monkey/token"
 	"testing"
+
+	"github.com/nixii/monkey/token"
 )
 
 func TestNextToken(test *testing.T) {
-	// input := "=+(){},;"
-
-	// tests := []struct {
-	// 	expectedType    token.TokenType
-	// 	expectedLiteral string
-	// }{
-	// 	{token.ASSIGN, "="},
-	// 	{token.PLUS, "+"},
-	// 	{token.LPAREN, "("},
-	// 	{token.RPAREN, ")"},
-	// 	{token.LBRACE, "{"},
-	// 	{token.RBRACE, "}"},
-	// 	{token.COMMA, ","},
-	// 	{token.SEMICOLON, ";"},
-	// 	{token.EOF, ""},
-	// }
 	input := `let five = 5;
 						let ten = 10;
 
