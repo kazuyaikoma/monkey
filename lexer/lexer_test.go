@@ -21,16 +21,25 @@ func TestNextToken(test *testing.T) {
 		expectedType    token.TokenType
 		expectedLiteral string
 	}{
+		// let five = 5;
 		{token.LET, "let"},
 		{token.IDENT, "five"},
 		{token.ASSIGN, "="},
 		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
+
+		// let ten =  10;
 		{token.LET, "let"},
 		{token.IDENT, "ten"},
 		{token.ASSIGN, "="},
 		{token.INT, "10"},
 		{token.SEMICOLON, ";"},
+
+		/*
+			let add = fn(x, y) {
+				x + y;
+			};
+		*/
 		{token.LET, "let"},
 		{token.IDENT, "add"},
 		{token.ASSIGN, "="},
@@ -47,6 +56,8 @@ func TestNextToken(test *testing.T) {
 		{token.SEMICOLON, ";"},
 		{token.RBRACE, "}"},
 		{token.SEMICOLON, ";"},
+
+		// let result = add(five, ten);
 		{token.LET, "let"},
 		{token.IDENT, "result"},
 		{token.ASSIGN, "="},
@@ -57,6 +68,7 @@ func TestNextToken(test *testing.T) {
 		{token.IDENT, "ten"},
 		{token.RPAREN, ")"},
 		{token.SEMICOLON, ";"},
+
 		{token.EOF, ""},
 	}
 
