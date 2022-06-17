@@ -10,6 +10,7 @@ import (
 )
 
 const PROMPT = ">> "
+const EXIT = "exit"
 
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
@@ -26,7 +27,7 @@ outer:
 		lex := lexer.New(line)
 
 		for tok := lex.NextToken(); tok.Type != token.EOF; tok = lex.NextToken() {
-			if tok.Literal == "exit" {
+			if tok.Literal == EXIT {
 				break outer
 			}
 			fmt.Fprintf(out, "%+v\n", tok)
