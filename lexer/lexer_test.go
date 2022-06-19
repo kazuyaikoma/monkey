@@ -31,7 +31,7 @@ func TestNextToken(test *testing.T) {
 	`
 
 	tests := []struct {
-		expectedType    token.TokenType
+		expectedType    token.Type
 		expectedLiteral string
 	}{
 		// let five = 5;
