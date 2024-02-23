@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"github.com/nixii/monkey/ast"
-	"github.com/nixii/monkey/lexer"
-	"github.com/nixii/monkey/token"
+	"github.com/kazuyaikoma/monkey/ast"
+	"github.com/kazuyaikoma/monkey/lexer"
+	"github.com/kazuyaikoma/monkey/token"
 )
 
 type Parser struct {

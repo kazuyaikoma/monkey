@@ -1,3 +1,3 @@
-module github.com/nixii/monkey
+module github.com/kazuyaikoma/monkey
 
 go 1.19
